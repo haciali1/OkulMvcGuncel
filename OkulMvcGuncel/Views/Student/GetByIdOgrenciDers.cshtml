@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Sube2.HelloMvc.Models.OgrenciDers>
+@{
+    ViewData["Title"] = "Öğrenci Dersler";
+    int ogrenciId = ViewBag.OgrenciId;
+}
+
+<h1>Öğrenci Dersleri</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Ders Adı</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Ders.Dersad</td>
+                <td>
+                    <form asp-action="RemoveDersFromOgrenci" asp-controller="Student" method="post" style="display:inline;" onsubmit="return confirm('Bu dersi kaldırmak istediğinizden emin misiniz?');">
+                        <input type="hidden" name="ogrenciId" value="@ogrenciId" />
+                        <input type="hidden" name="dersId" value="@item.DersId" />
+                        <button type="submit" class="btn btn-sm btn-outline-danger">Kaldır</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h2>Ders Ekle</h2>
+<form asp-action="AddDersToOgrenci" asp-controller="Student" method="post">
+    <input type="hidden" name="ogrenciId" value="@ogrenciId" />
+    <div class="form-group">
+        <label for="dersIds">Dersler</label>
+        <select multiple class="form-control" id="dersIds" name="dersIds">
+            @foreach (var ders in ViewBag.AllDersler)
+            {
+                <option value="@ders.Dersid">@ders.Dersad</option>
+            }
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Ekle</button>
+</form>
+
+<a asp-action="Index" asp-controller="Student" class="btn btn-outline-secondary">Geri</a>

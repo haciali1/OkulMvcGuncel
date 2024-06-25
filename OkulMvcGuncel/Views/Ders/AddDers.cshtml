@@ -1,0 +1,19 @@
+﻿@model Sube2.HelloMvc.Models.Ders
+@{
+    ViewData["Title"] = "Ders Ekle";
+}
+
+<h1>Ders Ekle</h1>
+
+<form asp-action="AddDers" asp-controller="Ders" method="post">
+    <div class="form-group">
+        <label for="Dersad">Ders Adı</label>
+        <input type="text" class="form-control" id="Dersad" name="Dersad" />
+    </div>
+    <div class="form-group">
+        <label for="Kredi">Kredi</label>
+        <input type="number" class="form-control" id="Kredi" name="Kredi" />
+    </div>
+    <button type="submit" class="btn btn-primary">Kaydet</button>
+    <a asp-action="Index" asp-controller="Ders" class="btn btn-secondary">Geri</a>
+</form>
