@@ -13,7 +13,7 @@ namespace Sube2.HelloMvc.Models
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
-            optionsBuilder.UseSqlServer(@"Data Source=YUSUFYILDIZ;Initial Catalog=OkulİntProg;Integrated Security=True;MultipleActiveResultSets=True;TrustServerCertificate=True");
+            optionsBuilder.UseSqlServer(@"Data Source=.\MSSQLSERVER01;Initial Catalog=OkulDbMvcF;Integrated Security=true;TrustServerCertificate=true");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
